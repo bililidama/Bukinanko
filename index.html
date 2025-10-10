@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>武器軟膏のペ～ジ</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="start">
+    <h1>武器軟膏のペ～ジ</h1>
+    <p>よ～こそいらっしゃいませ</p>
+  </header>
+
+  <!-- サイドバー -->
+  <aside>
+    <nav>
+      <ul>
+        <li><a href="#" data-page="home">ホ～ム</a></li>
+        <li><a href="#" data-page="sosaku">創作</a></li>
+        <li><a href="#" data-page="touhou">二次創作(東方)</a></li>
+        <li><a href="#" data-page="illust">二次創作(その他)</a></li>
+        <li><a href="#" data-page="diary">日記</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- コンテンツ領域 -->
+  <main>
+    <!-- ホーム -->
+  <section id="home-wrapper">
+ 
+  <div class="intro-card">
+    <h3>このサイトについて</h3>
+    <p>
+      おはよ～ございます。<br>
+      ここでは武器軟膏という人の絵とかいろいろが見られます。<br>
+      ごゆっくりど～ぞ。
+    </p>
+  </div>
+
+    <section id="home" class="page active">
+      <h2>更新履歴</h2>
+      <ul>
+        <li><time datetime="2025-10-05">2025/10/05</time> 創作のイラストを更新しました。</li>
+        <li><time datetime="2025-10-02">2025/10/02</time> 日記を更新しました。</li>
+        <li><time datetime="2025-10-02">2025/10/02</time> 東方のイラストを更新しました。</li>
+      </ul>
+    </section>
+
+      <div class="social-link">
+    <a href="https://x.com/Bukinanko" target="_blank" rel="noopener noreferrer">
+      <img src="img/102.jpg" alt="Xのロゴ">
+      <span>@Bukinanko</span>
+    </a>
+  </div>
+  </section>
+
+    <!-- 創作 -->
+    <section id="sosaku" class="page">
+      <h2>創作</h2>
+       <div class="gallery">
+       <figure>
+          <img src="png/絵っす.png" alt="うみ" class="clickable">
+          <figcaption>2025/10/05</figcaption>
+        </figure>
+
+        <figure>
+          <img src="png/無題2.png" alt="つたえ" class="clickable">
+          <figcaption>2025/10/05</figcaption>
+        </figure>
+
+        <figure>
+          <img src="png/イラスト12.png" alt="さかき" class="clickable">
+          <figcaption>2025/10/05</figcaption>
+        </figure>
+
+        </div>
+    </section>
+
+    <!-- 二次創作(東方) -->
+    <section id="touhou" class="page">
+      <h2>二次創作(東方)</h2>
+      <div class="gallery">
+        <figure>
+          <img src="img/イラスト153A.jpg" alt="ニナ" class="clickable">
+          <figcaption>2025/10/02</figcaption>
+        </figure>
+
+        <figure>
+          <img src="img/イラスト56D.png" alt="ぬえ" class="clickable">
+          <figcaption>2025/10/02</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 二次創作(その他) -->
+    <section id="illust" class="page">
+      <h2>二次創作(その他)</h2>
+      <div class="gallery">
+         <p>まだなにもないよ～</p>
+        <figure>
+      
+        </figure>
+      </div>
+    </section>
+
+    <!-- 日記 -->
+    <section id="diary" class="page">
+      
+      <h2>日記</h2>
+      <p>武器軟膏の日常を激録</p>
+
+      <article class="entry">
+
+
+        <h3>2025/10/03</h3>
+        <p>おはようございます。<br>
+        今日はこのサイトを作り始めました。</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ライトボックス -->
+  <div id="lightbox">
+    <img src="" alt="拡大画像">
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+  // ページ切り替え
+  document.querySelectorAll('aside a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const pageId = link.dataset.page;
+
+      // ページ切り替え
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      // ホーム専用要素の表示切り替え
+      const introCard = document.querySelector('.intro-card');
+      const xLink = document.querySelector('.social-link'); // ← Xボタンの要素
+
+      // intro-cardの切り替え
+      if (introCard) {
+        introCard.style.display = (pageId === 'home') ? 'block' : 'none';
+      }
+
+      // Xボタンの切り替え
+      if (xLink) {
+        xLink.style.display = (pageId === 'home') ? 'block' : 'none';
+      }
+    });
+  });
+
+  // クリックで拡大表示（ライトボックス）
+  const images = document.querySelectorAll('.clickable');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('show');
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
