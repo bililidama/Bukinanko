@@ -143,6 +143,10 @@ time{font-weight: bold;}
   margin: 0 auto !important;
   text-align: center !important;
 }
+.counter iframe {
+  display: block;
+  margin: 0 auto;
+}
 
 /* ページ切り替え */
 .page{
@@ -274,6 +278,7 @@ time{font-weight: bold;}
   transition: transform 0.2s ease;
   cursor: zoom-out;
 }
+
 
 
 
