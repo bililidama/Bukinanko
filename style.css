@@ -31,7 +31,7 @@ header p{
 }
 
 /*サイドバー*/
-/* ===== 共通設定 ===== */
+/* 共通：ボタン固定位置 */
 #menu-toggle {
   position: fixed;
   top: 1em;
@@ -46,7 +46,7 @@ header p{
   z-index: 1001;
 }
 
-/* ===== スマホ用（768px以下） ===== */
+/* スマホ用 */
 @media (max-width: 768px) {
   aside {
     position: fixed;
@@ -62,23 +62,19 @@ header p{
     padding-top: 4em;
   }
 
-
   aside.show {
     transform: translateX(0);
   }
 
-  /* メニュー項目 */
   aside ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
   aside ul li {
     text-align: center;
     padding: 1em 0;
   }
-
   aside ul li a {
     color: blanchedalmond;
     text-decoration: none;
@@ -86,12 +82,11 @@ header p{
   }
 }
 
-/* ===== PC用（769px以上） ===== */
+/* PC用 */
 @media (min-width: 769px) {
   #menu-toggle {
     display: none;
   }
-
   aside {
     position: fixed;
     top: 0;
