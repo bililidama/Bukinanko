@@ -1,4 +1,4 @@
-@charset "utf-8";
+charset "utf-8";
 /*全体*/
 body{
   background-color:  rgb(197, 121, 121);
@@ -96,7 +96,11 @@ aside a:hover { color: #ffccaa; }
     width: 100%;
   }
 }
-
+@media (min-width: 769px) {
+  #menu-toggle {
+    display: none;
+  }
+}
 
 /* ホーム */
 time{font-weight: bold;}
