@@ -212,8 +212,23 @@
   lightbox.addEventListener('click', () => {
     lightbox.classList.remove('show');
   });
+
+  const menuButton = document.getElementById('menu-toggle');
+  const sidebar = document.querySelector('aside');
+
+  if (menuButton && sidebar) {
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+
+    // サイドバー内のリンクを押したら自動で閉じる
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('show');
+      });
+    });
+  }
 </script>
 
 </body>
 </html>
-
