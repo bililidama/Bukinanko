@@ -20,6 +20,7 @@
 
   <!-- サイドバー -->
   <aside>
+    <button id="menu-toggle" aria-label="メニューを開く">☰</button>
     <nav>
       <ul>
         <li><a href="#" data-page="home">ホ～ム</a></li>
@@ -121,8 +122,10 @@
       <h2>日記</h2>
       <p>武器軟膏の日常を激録</p>
 
+        
        <article class="entry">
-       <h3>2025/10/11</h3>
+        <details open>
+        <summary>2025/10/11</summary>
         <p>おはようございます。今日はこのサイトをようやく公開しましたよ～。<br><br>
         このサイトを作ったのは、まあ前々からこういうのを作りたかったからというのもあるんだけど、今月の16日に発売予定のポケモンLegendsZ-Aのプレイした感想をがっつりネタバレしたかったからなんですよね。<br><br>
         このゲーム、ずっと楽しみにしてたんですよ。楽しみにしてた、の一言で済ませるには不十分なほど楽しみにしていました。発売間近というのもあり、かなり盛り上がってきましたね！一年前の自分が知ったらひっくり返るくらいの盛り上がりようです。<br><br>
@@ -131,12 +134,18 @@
         イラストはまあおまけです。日記だけだと味気ないので。こんな辺鄙なところで公開しなくともTwitterの辺鄙なアカウントで見られますし、そんなにたくさん描かないしね。<br><br>
         とにかく、今日お伝えしたかったのは、私はこのサイトを誰も見ていない体で更新していくので、Z-Aもそれ以外にもいろんなネタバレが出ますよ～、という話でした。一応、ネタバレする前にネタバレするよ～という旨の注意書きはすると思います、多分。<br>
         それでもよろしければ、ごゆっくりど～ぞ。</p>
-          </article>
+        </details>    
+        </article>
+          
+
       <article class="entry">
-        <h3>2025/10/03</h3>
+        <details open>
+        <summary>2025/10/03</summary>
         <p>おはようございます。<br>
         今日はこのサイトを作り始めました。</p>
+        </details>
       </article>
+      
     </section>
   </main>
 
@@ -152,10 +161,24 @@
     link.addEventListener('click', e => {
       e.preventDefault();
       const pageId = link.dataset.page;
-
-      // ページ切り替え
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
+
+  const menuButton = document.getElementById('menu-toggle');
+  const sidebar = document.querySelector('aside');
+
+  if (menuButton && sidebar) {
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+
+    // サイドバー内リンクを押したら自動で閉じる
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('show');
+      });
+    });
+  }
 
       // ホーム専用要素の表示切り替え
       const introCard = document.querySelector('.intro-card');
@@ -192,14 +215,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
