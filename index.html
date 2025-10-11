@@ -162,9 +162,30 @@
     link.addEventListener('click', e => {
       e.preventDefault();
       const pageId = link.dataset.page;
+
+      // ページ切り替え
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
 
+      // ホーム専用要素の表示切り替え
+      const introCard = document.querySelector('.intro-card');
+      const xLink = document.querySelector('.social-link');
+
+      if (introCard) {
+        introCard.style.display = (pageId === 'home') ? 'block' : 'none';
+      }
+
+      if (xLink) {
+        xLink.style.display = (pageId === 'home') ? 'block' : 'none';
+      }
+
+      // サイドバーを自動で閉じる（スマホ用）
+      const sidebar = document.querySelector('aside');
+      sidebar.classList.remove('show');
+    });
+  });
+
+  // ☰ ボタンでサイドバー開閉
   const menuButton = document.getElementById('menu-toggle');
   const sidebar = document.querySelector('aside');
 
@@ -172,30 +193,7 @@
     menuButton.addEventListener('click', () => {
       sidebar.classList.toggle('show');
     });
-
-    // サイドバー内リンクを押したら自動で閉じる
-    sidebar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        sidebar.classList.remove('show');
-      });
-    });
   }
-
-      // ホーム専用要素の表示切り替え
-      const introCard = document.querySelector('.intro-card');
-      const xLink = document.querySelector('.social-link'); // ← Xボタンの要素
-
-      // intro-cardの切り替え
-      if (introCard) {
-        introCard.style.display = (pageId === 'home') ? 'block' : 'none';
-      }
-
-      // Xボタンの切り替え
-      if (xLink) {
-        xLink.style.display = (pageId === 'home') ? 'block' : 'none';
-      }
-    });
-  });
 
   // クリックで拡大表示（ライトボックス）
   const images = document.querySelectorAll('.clickable');
@@ -212,23 +210,8 @@
   lightbox.addEventListener('click', () => {
     lightbox.classList.remove('show');
   });
-
-  const menuButton = document.getElementById('menu-toggle');
-  const sidebar = document.querySelector('aside');
-
-  if (menuButton && sidebar) {
-    menuButton.addEventListener('click', () => {
-      sidebar.classList.toggle('show');
-    });
-
-    // サイドバー内のリンクを押したら自動で閉じる
-    sidebar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        sidebar.classList.remove('show');
-      });
-    });
-  }
 </script>
+
 
 </body>
 </html>
